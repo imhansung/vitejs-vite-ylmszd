@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        {{nextYear('안녕하세요')}}
+        <input v-bind:type="type" :value="inputData"><br>
+        <a :href="getKossieCoderLink('kossieCoder')">cozy coder channel</a><br>
+        <button onclick="alert('hello')">Click me</button><br>
+        {{ year }}<br>
+        <button v-on:click="plus">plus</button>
+        <button v-on:click="minus">minus</button>
+        <br> 
+        <form v-on:submit.prevent="submit">
+            <!-- <input type="text" :value="text" @keyup="updateText"><br> -->
+             <input type="text" v-model="text"><br>
+             <!-- 양방향 바인딩이 필요할 때 v-model -->
+            {{ text }}<br>
+            <button type="submit">submit</button>
+            
+        </form>
+        
+    </div>
+    <script>
+        //v-bind는 생략이 가능함
+        //v-on 은 @ 로 대체 가능함
+        new Vue({
+            el: '#app',
+            data: {
+                person: {
+                    name: '코지코더',
+                    age: 34
+                },
+                inputData: 'hello',
+                type:'number',
+                link: "http://www.youtube.com/",
+                year: 2018,
+                text: 'texttext'
+                
+            },
+            methods:{
+                getKossieCoderLink(channel){
+                    return this.link + channel;
+                },
+                //nextYear: function(greeting){
+                nextYear(greeting){
+                    return greeting + '! ' + this.person.name + '는 내년에 ' + (this.person.age +1) + '살입니다';
+                },
+                otherMethod: function(){
+                    this.nextYear();
+                },
+                alert(){
+                    alert('hi cozy coder');
+                },
+                plus(){
+                    this.year++
+                },
+                minus(){
+                    this.year--
+                },
+                submit(){
+                    alert('submitted');
+                    console.log('hello');
+                },
+                // updateText(event){
+                //     //console.log(event);
+                //     this.text = event.target.value;
+                // }
+            }
+        })
+    </script>
+</body>
+</html>

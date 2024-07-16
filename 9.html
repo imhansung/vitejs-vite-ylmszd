@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9강 v-if 와 v-show</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .font-bold {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <template v-if="show">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-if="number===1">yes</div>
+        <div v-else-if="number===2">hihihi</div>
+        <div v-else>no</div><br>
+        <button @click="toggleShow">Toggle</button><br>{{show}}{{vshow}}
+        <button @click="increaseNumber">Increase</button> {{number}}
+        <br>
+    <br>
+    <div v-show="vshow">vsyes</div>
+    <button @click="toggleVShow">togglevshow</button>{{vshow}}
+    </div>
+    
+
+    <br>
+    <br>
+    <div>
+        <a href="index.html">home</a>
+    </div>
+    <div>
+        <a href="7강.html">7</a><br>
+        <a href="8강.html">8</a><br>
+        <a href="9강.html">9</a><br>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+              show: true,
+              number : 1,
+              vshow : true
+            },
+            methods:{
+                toggleShow(){
+                    this.show = !this.show;
+                },
+                increaseNumber(){
+                    this.number++;
+                },
+                toggleVShow(){
+                    this.vshow = !this.vshow;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

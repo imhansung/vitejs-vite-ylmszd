@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11강 여러개의 vue 인스턴스 사용하기</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .font-bold {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        {{name}}<br>
+        <button @click="changeText">Click</button>
+    </div>
+    <div id="app-1">
+        {{name}}<br>
+        <button @click="changeText">Click</button>
+    </div>
+    
+    <hr>
+    <div>
+        <a href="index.html">home</a>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                name: 'sillusellu'
+            },
+            methods:{
+                changeText(){
+                    app1.name='sisellu updated';
+                }
+            }
+        })
+        const app1 = new Vue({
+            el: '#app-1',
+            data: {
+                name: 'elulellu'
+            },
+            methods:{
+                changeText(){
+                    this.name='elulellu updated';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

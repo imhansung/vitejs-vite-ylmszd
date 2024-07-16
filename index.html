@@ -3,40 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>뷰 기초 익히기</title>
+    <title>vue.js exercise</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .font-bold {
+            font-weight: bold;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </head>
 <body>
     <div id="app">
-        {{ message }}
-        <button @click="changeMessage"> Click</button>
-        <!-- {{ message.split('').reverse().join('') }} -->
-        <!-- {{ reversedMessage }} -->
-        {{updated}}
+        <div v-for="name in people">
+            <a :href="getUrl('{{name}}')">getUrl({{name}})</a><br>
+
+        </div>
+
+    </div>
+    
+    <br><br>
+    <div>
+        <a href="index.html">home</a>
+    </div>
+    <div>
+        <a href="1-6.html">1-6</a><br>
+        <a href="7.html">7</a><br>
+        <a href="8.html">8</a><br>
+        <a href="9.html">9</a><br>
+        <a href="10.html">10</a><br>
+        <a href="11.html">11</a><br>
+        <a href="12.html">12</a><br>
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-              message: 'hello',
-              updated: 'no'
+              people:[
+                '1-6',7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28
+            ]
             },
             methods:{
-                
-                changeMessage(){
-                    this.message = 'kozycodder'
-                }
-            },
-            computed: {
-                reversedMessage() {
-                    return this.message.split('').reverse().join('')
-                }
-            },
-            watch: {
-                message(newVal, oldVal){
-                    console.log(newVal, oldVal);
-                    this.updated = 'yes';
+                getUrl(url){
+                    return url + ".html"
                 }
             }
         })

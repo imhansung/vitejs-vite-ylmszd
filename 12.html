@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12강 vue 컴포넌트</title>
+    <!-- 다시한번  -->
+    <style>
+        .red {
+            color: red;
+        }
+        .font-bold {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <!-- {{name}}<br>
+        <button @click="changeText">Click</button>
+        <hr> -->
+        <sillusellu-button></sillusellu-button>
+        
+    </div>
+    <hr>
+    <hr>
+    <div id="app-1">
+        <!-- {{name}}<br>
+        <button @click="changeText">Click</button>
+        <hr> -->
+        <sillusellu-button></sillusellu-button>
+    </div>
+    
+    <hr>
+    <div>
+        <a href="index.html">home</a>
+    </div>
+
+    <script>
+        // Vue.component('hello-sellu',{
+        //     template:'<div>hello sellu</div>'
+        // });
+        // Vue.component('sillusellu-button', {
+        //     template: //줄바꿀땐 백틱
+        //     ` <div>
+        //     {{name}}<br>
+        //     <hello-sellu></hello-sellu>
+        //     <button @click="changeText">Click</button>
+        //     </div>`,
+        //     data() {    //함수로 바꾼다 오브젝트가 리퍼런스 주소로 넘어간다 
+        //         return{
+        //             name: 'sillusellu'
+        //         }
+        //     },
+        //     methods:{
+        //         changeText(){
+        //             this.name='sisellu updated';
+        //         }
+        //     }
+        // });
+
+        const HelloSellu = {
+            template: '<div>hello sellu</div>'
+        };
+        const selluButton = {
+            components:{
+                'hello-sellu':HelloSellu
+            },
+            template: //줄바꿀땐 백틱
+            ` <div>
+            {{name}}<br>
+            <hello-sellu></hello-sellu>
+            <button @click="changeText">Click</button>
+            </div>`,
+            data() {    //함수로 바꾼다 오브젝트가 리퍼런스 주소로 넘어간다 
+                return{
+                    name: 'sillusellu'
+                }
+            },
+            methods:{
+                changeText(){
+                    this.name='sisellu updated';
+                }
+            }
+        }
+        const app = new Vue({
+            el: '#app',
+            components:{
+                'sillusellu-button':selluButton
+            }
+            // data: {
+            //     name: 'sillusellu'
+            // },
+            // methods:{
+            //     changeText(){
+            //         this.name='sisellu updated';
+            //     }
+            // }
+        });
+        const app1 = new Vue({
+            el: '#app-1',
+            components:{
+                'sillusellu-button':selluButton
+            }
+            // data: {
+            //     name: 'ancajjanz'
+            // },
+            // methods:{
+            //     changeText(){
+            //         this.name='ancajjanz updated';
+            //     }
+            // }
+        })
+    </script>
+</body>
+</html>
